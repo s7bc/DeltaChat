@@ -1,64 +1,82 @@
-# What's New in Our Custom Delta Chat 2.62.41
+# Delta Chat 2.62.41.1 — Custom Build
 
-Based on the official **Delta Chat 2.62.0**, our customized version introduces additional messaging capabilities, improved email integration, enhanced formatting, and greater control over privacy and encryption.
+## What's new compared with Delta Chat 2.62.0
 
-### 1. Pinned Messages
-- Added support for pinning important messages in conversations.
-- Introduced a Telegram-style pinned-message banner at the top of the chat.
-- The banner overlays the conversation, allowing messages to scroll underneath it.
-- Supports a three-line preview and image thumbnails.
-- Clicking the banner navigates to the original message.
-- Added a dedicated list for viewing and managing pinned messages.
-- Implemented the desktop interface, with Android adaptation being developed.
+This document describes the additions in **Delta Chat 2.62.41.1**, our modified build based on the upstream **2.62.0** release.
 
-### 2. Advanced IMAP Folder Management
-- Restored and extended IMAP folder selection functionality.
-- Users can explicitly choose which IMAP folder Delta Chat monitors.
-- Improved compatibility with existing email accounts and custom IMAP configurations.
-- Greater control over mailbox synchronization and message processing.
 
-### 3. Markdown and Mathematical Formula Support
-- Added Markdown rendering for formatted messages.
-- Added mathematical formula rendering using KaTeX.
-- Supports mathematical expressions within messages.
-- Improved readability of technical and scientific discussions.
+### 1. Email accounts and IMAP folders
 
-### 4. Original-Quality Image Sharing
-- Added an **Original Quality** option for sending images without lossy compression.
-- Preserves original image resolution and quality.
-- Placed the original-quality option at the top of the image-quality selection menu.
+- **IMAP folder selection:** choose the folder to be monitored for each configured email account/relay, rather than being limited to a predetermined folder.
+- The setting allows the user to control which incoming messages Delta Chat processes.
 
-### 5. Extended Contact Management
-- Added two methods for adding contacts: QR-code scanning and email-address entry.
-- Added bulk contact creation from lists of email addresses.
-- Email addresses can be separated by spaces, line breaks, or other non-email delimiters.
-- Added explicit manual invitation controls instead of automatically initiating encrypted conversations.
+### 2. Message formatting
 
-### 6. Flexible Email Encryption
-- Added configurable mandatory encryption for individual email relays.
-- Enabled ordinary, unencrypted email communication when encryption is unavailable or not required.
-- Removed the requirement to automatically establish encryption for every newly added email contact.
-- Provided greater control over when encrypted conversations are initiated.
+- **Markdown rendering** in messages.
+- **Mathematical expressions** rendered using KaTeX.
+- Improvements to multiline-message handling, including preservation of line breaks in the Android interface.
 
-### 7. Improved Message Handling
-- Improved preservation of line breaks in Android messages.
-- Worked on consistent message formatting across Windows, Linux, and Android.
-- Enhanced the presentation and navigation of pinned content.
+### 3. Images
 
-### 8. Interface and Localization Improvements
-- Added Russian and English translations for the new interface elements.
-- Updated the About section.
-- Maintained compatibility with the familiar Delta Chat interface and application identity.
+- An **Original Quality** option for sending images without the application's normal quality reduction.
+- The option is displayed first in the image-quality choices, with a simplified label.
 
-### 9. Cross-Platform Builds
-Our customized version targets:
+### 4. Contacts and invitations
 
-- **Windows:** installer and portable application.
-- **Linux:** Debian 12 DEB package and AppImage.
-- **Android:** APK packages for ARMv7, ARM64-v8a, and x86.
+- Add a contact by **QR code** or by **email address**.
+- Enter or paste **multiple email addresses** at once; addresses are extracted even when separated by spaces, newlines, or other non-email characters.
+- **Manual invitation** controls: invitations can be sent explicitly rather than automatically when an address is entered.
 
-### Summary
+### 5. Encryption and plain email
 
-**Delta Chat 2.62.41** extends the original application with pinned messages, advanced IMAP folder management, Markdown and mathematical formula rendering, lossless image sharing, flexible contact management, and configurable encryption behavior.
+- A **forced-encryption setting per email account/relay**.
+- Support for sending and receiving ordinary **unencrypted email when permitted by the selected settings**, instead of requiring encryption for every message.
+- Encryption requirements remain explicit so that users can distinguish protected conversations from plain email.
 
-These enhancements are particularly useful for technical communication, scientific discussions, and users who require greater control over their email and messaging workflows.
+### 6. Pinned messages
+
+- A pinned-message banner **overlaid at the top of the conversation**, with chat messages scrolling beneath it rather than being replaced by an opaque, separate panel.
+- A **three-line preview** of the pinned message.
+- **Image thumbnails** in the preview when a pinned message contains an image, instead of a generic image icon.
+- A **Pinned Messages** list for reviewing pinned items.
+- Selecting a banner or list entry navigates to the **original message in the conversation**.
+- Support for managing pins, including unpinning messages.
+
+### 7. vCard contact import and export
+
+- **Profile context menu:** import contacts from one `.vcf` file or export all contacts belonging to the selected profile into one `.vcf` file.
+- **Individual contact context menu:** **Export Contact** appears below **View Profile**.
+- **Group context menu:** **Export Contacts** writes the group participants into a single `.vcf` file, excluding the current user and duplicate entries.
+- Standard file-open and file-save dialogs are used.
+- vCard processing uses **existing Delta Chat core functionality**; no changes to the core contact-import or identity-merging algorithms were introduced for this feature.
+
+**Important:** importing a vCard is not a blanket overwrite-by-email operation. Matching and updating follow the core's existing rules, including handling of cryptographic identities and key material. Importing contacts does not guarantee that every previous verification or invitation state will be restored.
+
+### 8. Interface and localization
+
+- Russian and English translations for added controls and settings.
+- An adjusted **About** screen with custom project/support wording.
+- The standard Delta Chat application name is retained.
+
+## Platforms
+
+| Platform | Version | Notes |
+| --- | --- | --- |
+| Windows | 2.62.41.1 | Desktop application; installer and portable packaging are build targets. |
+| Linux | 2.62.41.1 | Desktop application; Debian 12 `.deb` and AppImage are build targets. |
+| Android | 2.62.41.1 | Android-specific UI adaptations; targets include ARMv7, ARM64 and x86. |
+
+
+## Scope and compatibility
+
+- Changes are intended to remain compatible with the corresponding Delta Chat 2.62-based data and protocols.
+- The vCard functionality is implemented at the user-interface level using pre-existing core APIs; it does **not** redefine how the core matches contacts or stores cryptographic keys.
+- Available features may vary with platform and the exact build revision. Check the built application before treating this list as a verified release checklist.
+
+
+
+You can donate to the development of an improved version of Delta Chat
+
+bitcoin:BC1QMXNGJMRAQXJ5LY7UAMRC4C7Z7DEJUE3RRQZGCD
+
+<img width="340" height="340" alt="изображение" src="https://github.com/user-attachments/assets/88b54ddf-35dc-4da1-8402-831dbbfa49f0" />
