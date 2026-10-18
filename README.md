@@ -52,12 +52,6 @@ This document describes the additions in **Delta Chat 2.62.41.1**, our modified 
 
 **Important:** importing a vCard is not a blanket overwrite-by-email operation. Matching and updating follow the core's existing rules, including handling of cryptographic identities and key material. Importing contacts does not guarantee that every previous verification or invitation state will be restored.
 
-### 8. Interface and localization
-
-- Russian and English translations for added controls and settings.
-- An adjusted **About** screen with custom project/support wording.
-- The standard Delta Chat application name is retained.
-
 ## Platforms
 
 | Platform | Version | Notes |
